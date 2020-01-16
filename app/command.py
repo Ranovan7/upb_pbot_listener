@@ -15,7 +15,7 @@ from telegram import Bot
 from app import app, db
 from app.models import Device, Raw, Periodik, Lokasi
 
-upb_bendungan = ("username", "password")
+upb_bendungan = ("upbbsolo", "upbbisa")
 
 URL = "https://prinus.net/api/sensor"
 MQTT_HOST = "mqtt.bbws-bsolo.net"
@@ -197,7 +197,7 @@ def subscribe_topic():
 
 @app.cli.command()
 def fetch_logger():
-    res = requests.get(URL, auth=bws_sul1)
+    res = requests.get(URL, auth=upb_bendungan)
 
     if res.status_code == 200:
         logger = json.loads(res.text)
@@ -220,7 +220,7 @@ def fetch_periodic(sn, sampling):
     sampling_param = ''
     if sampling:
         sampling_param = '&sampling=' + sampling
-    res = requests.get(URL + '/' + sn + '?robot=1' + sampling_param, auth=bws_sul1)
+    res = requests.get(URL + '/' + sn + '?robot=1' + sampling_param, auth=upb_bendungan)
     data = json.loads(res.text)
     for d in data:
         content = Raw(content=d)
