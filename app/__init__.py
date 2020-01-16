@@ -18,15 +18,6 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = 'login'
 
-from app.logger import bp as logger_bp
-app.register_blueprint(logger_bp, url_prefix='/logger')
-
-from app.pos import bp as lokasi_bp
-app.register_blueprint(lokasi_bp, url_prefix='/pos')
-
-from app.raw import bp as raw_bp
-app.register_blueprint(raw_bp, url_prefix='/raw')
-
 from app import routes, models, command
 
 if __name__ == '__main__':
