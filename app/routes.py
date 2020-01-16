@@ -6,7 +6,6 @@ from sqlalchemy import desc
 
 from app import app
 from app.models import User, Lokasi, Periodik
-from app.forms import LoginForm
 
 
 @app.route('/')
